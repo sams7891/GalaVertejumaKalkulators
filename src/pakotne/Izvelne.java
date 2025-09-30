@@ -15,6 +15,12 @@ public class Izvelne {
 			if(izvele == null)
 				izvele = "Apturēt";
 			
+			switch(izvele) {
+			case "Ievadīt studentus":
+				GalvenaKlase.ievadiStudentus();
+				break;
+			}
+			
 		}while(!izvele.equals("Apturēt") );
 	}
 
