@@ -103,16 +103,17 @@ public class GalvenaKlase {
 	public static void ievaditAtzimes() {
 		
 		int[][] kriterijaVertejums = new int[studentuSkaits][kriteriji.length];
-		
+		String pagVertiba;
 		for(int i=0; i<kriteriji.length; i++) {
 			for(int j=0; j<kriterijaVertejums[i].length; j++) {
 				do {
-					System.out.println("Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j]);
-					while(!scan.hasNextInt()) {
-						System.out.println("Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j]);
-						scan.next();
+					try {
+					pagVertiba = JOptionPane.showInputDialog(null, "Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j], "jautājums", JOptionPane.QUESTION_MESSAGE);
+					
+					kriterijaVertejums[i][j] = Integer.parseInt(pagVertiba);
+					}catch(NumberFormatException e) {
+						JOptionPane.showMessageDialog(null, e);
 					}
-					kriterijaVertejums[i][j] = scan.nextInt();
 				}while(kriterijaVertejums[i][j]<0 || kriterijaVertejums[i][j]>10);
 			}
 		}

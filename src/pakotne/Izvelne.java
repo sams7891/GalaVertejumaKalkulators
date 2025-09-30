@@ -34,6 +34,15 @@ public class Izvelne {
 					break;
 				}
 				GalvenaKlase.ievaditKritSvaru();
+				
+			case "Ievadīt vērtējumu":
+				if(GalvenaKlase.studentuSkaits < 1 && GalvenaKlase.kriteriji == null) {
+					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet vispirms datus par studentiem un kritērijiem", "Paziņojums", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				
+				GalvenaKlase.ievaditAtzimes();
+				break;
 			}
 			
 		}while(!izvele.equals("Apturēt") );
