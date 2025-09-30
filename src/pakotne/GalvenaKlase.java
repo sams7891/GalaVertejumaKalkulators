@@ -149,36 +149,4 @@ public class GalvenaKlase {
 	}
 	
 	
-	/*
-
-	
-	
-	public static void izvelne() {
-		int studSk, kritSk;
-		
-		
-		
-		
-		
-		
-		
-		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
-		
-		
-		// Gala vērtējuma aprēķināšana
-		
-		
-		// Gala vērtējumu izvadīšana
-		
-		
-		System.out.println("Vai saglabāt teksta failā? y/n");
-		
-		char izv;
-		
-		do {
-			izv = scan.next().charAt(0);
-		}while(izv == 'y' || izv == 'n');
-		scan.close();
-	}
-	*/
 }

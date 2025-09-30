@@ -1,6 +1,8 @@
 package pakotne;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -24,6 +26,19 @@ public class FailuApstrade {
 	}
 	
 	public static void nolasit() {
-		
+		String teksts, str = "";
+		try {
+			FileReader fr = new FileReader("Atzimes.txt");
+			BufferedReader br = new BufferedReader(fr);
+			
+			while((teksts = br.readLine()) != null) {
+				str += teksts + "\n";
+			}
+			br.close();
+
+			JOptionPane.showMessageDialog(null, str, "Atzīmes", JOptionPane.PLAIN_MESSAGE);
+		}catch(IOException e) {
+			JOptionPane.showMessageDialog(null, e);
+		}
 	}
 }

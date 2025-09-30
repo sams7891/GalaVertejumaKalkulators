@@ -89,7 +89,12 @@ public class Izvelne {
 					break;
 				}
 				FailuApstrade.saglabat(teksts);
-			}
+				break;
+			
+			case "Apskatīt failu":
+				FailuApstrade.nolasit();
+				break;
+		}
 			
 		}while(!izvele.equals("Apturēt") );
 	}
