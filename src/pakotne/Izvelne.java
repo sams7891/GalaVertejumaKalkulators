@@ -59,6 +59,29 @@ public class Izvelne {
 				GalvenaKlase.aprekinatVertejumu();
 				break;
 				
+			case "Labot kritēriju":
+				if(!ievadijakriterijus) {
+					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet sākuma vērtību", "Paziņojums", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				GalvenaKlase.ievaditKriterijus();
+				break;
+				
+			case "Labot svaru":
+				if(!ievadijasvaru) {
+					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet sākuma vērtību", "Paziņojums", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				GalvenaKlase.ievaditKritSvaru();
+				break;
+				
+			case "Labot iegūto vērtējumu":
+				if(!ievadijavertejumu) {
+					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet sākuma vērtību", "Paziņojums", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				GalvenaKlase.ievaditAtzimes();
+				break;
 			}
 			
 		}while(!izvele.equals("Apturēt") );
