@@ -1,0 +1,4 @@
+Studenta ro vērtējums par kritēriju mat ir 5, kura svars ir 50Studenta ro vērtējums par kritēriju lat ir 5, kura svars ir 50Semestra vērtējums ir 5 balles
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Studenta in vērtējums par kritēriju mat ir 5, kura svars ir 50Studenta in vērtējums par kritēriju lat ir 5, kura svars ir 50Semestra vērtējums ir 5 balles
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

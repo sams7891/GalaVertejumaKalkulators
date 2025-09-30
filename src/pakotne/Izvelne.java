@@ -56,7 +56,7 @@ public class Izvelne {
 					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet vispirms datus par studentiem un kritērijiem un svariem un vērtējumiem", "Paziņojums", JOptionPane.WARNING_MESSAGE);
 					break;
 				}
-				GalvenaKlase.aprekinatVertejumu();
+				teksts = GalvenaKlase.aprekinatVertejumu();
 				break;
 				
 			case "Labot kritēriju":
@@ -82,6 +82,13 @@ public class Izvelne {
 				}
 				GalvenaKlase.ievaditAtzimes();
 				break;
+				
+			case "Saglabāt failā":
+				if(teksts.equals("")) {
+					JOptionPane.showMessageDialog(null, "Nav ko saglabāt", "Paziņojums", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
+				FailuApstrade.saglabat(teksts);
 			}
 			
 		}while(!izvele.equals("Apturēt") );

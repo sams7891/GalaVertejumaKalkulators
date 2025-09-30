@@ -135,7 +135,7 @@ public class GalvenaKlase {
 		}
 		String teksts = "";
 		
-		for(int i=0; i<studenti.length; i++) {	
+		for(int i=0; i<studenti.length; i++) {
 			for(int j=0; j<kriteriji.length; j++) {
 				teksts += "Studenta "+studenti[i]+" vērtējums par kritēriju "+kriteriji[j]+" ir "+kriterijaVertejums[i][j]+", kura svars ir "+kriterijaSvars[j];
 			}
