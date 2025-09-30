@@ -7,7 +7,9 @@ public class Izvelne {
 	public static void main(String[] args) {
 		
 		String izvele;
-		String[] darbibuSaraksts = {"Ievadīt studentus", "Ievadīt vērtēšanas kritērijus", "Ievadīt kritēriju svaru", "Ievadīt vērtējumu", "Labot kritēriju", "Labot svaru", "Ievadīt iegūto vērtējumu", "Labot iegūto vērtējumu", "Apskatīt failu", "Apturēt"};
+		String teksts = "";
+		boolean ievadijastudentus = false, ievadijakriterijus = false, ievadijasvaru = false, ievadijavertejumu = false;
+		String[] darbibuSaraksts = {"Ievadīt studentus", "Ievadīt vērtēšanas kritērijus", "Ievadīt kritēriju svaru", "Ievadīt vērtējumu", "Labot kritēriju", "Labot svaru", "Ievadīt iegūto vērtējumu", "Labot iegūto vērtējumu", "Aprēķināt gala vērtējumu", "Saglabāt failā", "Apskatīt failu", "Apturēt"};
 		do {
 			
 			izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies operāciju", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, darbibuSaraksts, darbibuSaraksts[0]);
@@ -18,6 +20,7 @@ public class Izvelne {
 			switch(izvele) {
 			case "Ievadīt studentus":
 				GalvenaKlase.ievadiStudentus();
+				ievadijastudentus = true;
 				break;
 				
 			case "Ievadīt vērtēšanas kritērijus":
@@ -26,6 +29,7 @@ public class Izvelne {
 					break;
 				}
 				GalvenaKlase.ievaditKriterijus();
+				ievadijakriterijus = true;
 				break;
 				
 			case "Ievadīt kritēriju svaru":
@@ -34,6 +38,8 @@ public class Izvelne {
 					break;
 				}
 				GalvenaKlase.ievaditKritSvaru();
+				ievadijasvaru = true;
+				break;
 				
 			case "Ievadīt vērtējumu":
 				if(GalvenaKlase.studentuSkaits < 1 && GalvenaKlase.kriteriji == null) {
@@ -42,7 +48,17 @@ public class Izvelne {
 				}
 				
 				GalvenaKlase.ievaditAtzimes();
+				ievadijavertejumu = true;
 				break;
+				
+			case "Aprēķināt gala vērtējumu":
+				if(!(ievadijastudentus && ievadijakriterijus && ievadijasvaru && ievadijavertejumu)) {
+					JOptionPane.showMessageDialog(null, "Lūdzu ievadiet vispirms datus par studentiem un kritērijiem un svariem un vērtējumiem", "Paziņojums", JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+				GalvenaKlase.aprekinatVertejumu();
+				break;
+				
 			}
 			
 		}while(!izvele.equals("Apturēt") );

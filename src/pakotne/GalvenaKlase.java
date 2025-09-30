@@ -12,6 +12,8 @@ public class GalvenaKlase {
 	
 	static String[] studenti;
 	static String[] kriteriji;
+	static int[] kriterijaSvars;
+	static int[][] kriterijaVertejums;
 
 	static int studentuSkaits = 0;
 
@@ -74,7 +76,7 @@ public class GalvenaKlase {
 	public static void ievaditKritSvaru() {
 		int maxSvars = 100, sk = 1;
 		double atlSvars;
-		int[] kriterijaSvars = new int[kriteriji.length];
+		kriterijaSvars = new int[kriteriji.length];
 		String pagVertiba;
 		
 		// Norāda katra kritērija svaru
@@ -102,7 +104,7 @@ public class GalvenaKlase {
 
 	public static void ievaditAtzimes() {
 		
-		int[][] kriterijaVertejums = new int[studentuSkaits][kriteriji.length];
+		kriterijaVertejums = new int[studentuSkaits][kriteriji.length];
 		String pagVertiba;
 		for(int i=0; i<kriteriji.length; i++) {
 			for(int j=0; j<kriterijaVertejums[i].length; j++) {
@@ -119,26 +121,10 @@ public class GalvenaKlase {
 		}
 	}
 	
-	
-	/*
-			double[] semestraVertejums = new double[studentuSkaits];
-
-	
-	
-	public static void izvelne() {
-		int studSk, kritSk;
-		
+	public static String aprekinatVertejumu() {
+		double[] semestraVertejums = new double[studentuSkaits];
 		DecimalFormat df = new DecimalFormat("0.#");
-		
-		
-		
-		
-		
-		
-		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
-		
-		
-		// Gala vērtējuma aprēķināšana
+
 		double rezultats;
 		for(int i=0; i<studenti.length; i++) {
 			rezultats=0;
@@ -147,9 +133,6 @@ public class GalvenaKlase {
 			}
 			semestraVertejums[i] = rezultats;
 		}
-		
-		// Gala vērtējumu izvadīšana
-		
 		String teksts = "";
 		
 		for(int i=0; i<studenti.length; i++) {	
@@ -160,7 +143,34 @@ public class GalvenaKlase {
 					+ "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 			
 		}
-		System.out.println(teksts);
+		JOptionPane.showMessageDialog(null, "Studentu iegūtie vērtējumi:\n" + teksts);
+		
+		return teksts;
+	}
+	
+	
+	/*
+
+	
+	
+	public static void izvelne() {
+		int studSk, kritSk;
+		
+		
+		
+		
+		
+		
+		
+		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
+		
+		
+		// Gala vērtējuma aprēķināšana
+		
+		
+		// Gala vērtējumu izvadīšana
+		
+		
 		System.out.println("Vai saglabāt teksta failā? y/n");
 		
 		char izv;
