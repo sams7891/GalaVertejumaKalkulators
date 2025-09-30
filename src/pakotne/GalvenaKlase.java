@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class GalvenaKlase {
-	public static void main(String[] args) {
+	public static void izvelne() {
 		int studSk, kritSk;
 		Scanner scan = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat("0.#");
@@ -99,13 +99,25 @@ public class GalvenaKlase {
 		}
 		
 		// Gala vērtējumu izvadīšana
+		
+		String teksts = "";
+		
 		for(int i=0; i<studenti.length; i++) {	
 			for(int j=0; j<kriteriji.length; j++) {
-				System.out.println("Studenta "+studenti[i]+" vērtējums par kritēriju "+kriteriji[j]+" ir "+kriterijaVertejums[i][j]+", kura svars ir "+kriterijaSvars[j]);
+				teksts += "Studenta "+studenti[i]+" vērtējums par kritēriju "+kriteriji[j]+" ir "+kriterijaVertejums[i][j]+", kura svars ir "+kriterijaSvars[j];
 			}
-			System.out.println("Semestra vērtējums ir "+df.format(semestraVertejums[i])+" balles"
-					+ "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+			teksts += "Semestra vērtējums ir "+df.format(semestraVertejums[i])+" balles"
+					+ "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+			
 		}
+		System.out.println(teksts);
+		System.out.println("Vai saglabāt teksta failā? y/n");
+		
+		char izv;
+		
+		do {
+			izv = scan.next().charAt(0);
+		}while(izv == 'y' || izv == 'n');
 		scan.close();
 	}
 }
