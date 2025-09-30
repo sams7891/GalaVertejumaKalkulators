@@ -9,9 +9,16 @@ public class GalvenaKlase {
 	
 	static Scanner scan = new Scanner(System.in);
 	
+	
+	static String[] studenti;
+	static String[] kriteriji;
+
+	static int studentuSkaits = 0;
+
+	
+	
 	public static void ievadiStudentus() {
 		String studSk;
-		int studentuSkaits = 0;
 		// Audzēkņu skaita ievade
 		do {
 			try {
@@ -21,7 +28,7 @@ public class GalvenaKlase {
 				JOptionPane.showMessageDialog(null, e);
 			}
 		}while(studentuSkaits<1);
-		String[] studenti = new String[studentuSkaits];
+		studenti = new String[studentuSkaits];
 		
 		// Ievada audzēkņu vārdus, uzvārdus
 		for(int i=0; i<studenti.length; i++) {
@@ -32,70 +39,72 @@ public class GalvenaKlase {
 	
 	}
 	
-	
-	/*
-	
-	
-	
-	public static void izvelne() {
-		int studSk, kritSk;
-		
-		DecimalFormat df = new DecimalFormat("0.#");
-		
-		
-		
-		
+	public static void ievaditKriterijus() {
 		// Vērtēšanas kritēriju skaita ievade
+		String kritSkString;
+		int kritSk = 0;
 		do {
-			System.out.println("Kāds būs kritēriju skaits?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Kāds būs kritēriju skaits?");
-				scan.next();
+			try {
+				kritSkString = JOptionPane.showInputDialog(null, "Kāds būs kritēriju skaits?", "Jautājums", JOptionPane.QUESTION_MESSAGE);
+			
+				kritSk = Integer.parseInt(kritSkString);
+				
+			}catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, e);
 			}
-			kritSk = scan.nextInt();
 		}while(kritSk<1);
-		String[] kriteriji = new String[kritSk];
-		int[] kriterijaSvars = new int[kritSk];
-		int[][] kriterijaVertejums = new int[studSk][kritSk];
-		double[] semestraVertejums = new double[studSk];
 		
-		scan.nextLine();
+		
+		kriteriji = new String[kritSk];
+		
 		
 		
 		
 		// Definē kritērijus
-		int maxSvars = 100, sk = 1;
-		double atlSvars;
+		
 		for(int i=0; i<kriteriji.length; i++) {
 			do {
-				System.out.println("Ievadi "+(i+1)+". kritēriju");
-				kriteriji[i] = scan.nextLine().trim();
+				kriteriji[i] = JOptionPane.showInputDialog(null, "Ievadi "+(i+1)+". kritēriju", "Jautājums", JOptionPane.QUESTION_MESSAGE).trim();
 			} while(!kriteriji[i].matches("^[\\p{L} ]+$"));
 			
-			// Norāda katra kritērija svaru
-			do {
-				System.out.println("Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")");
-				while(!scan.hasNextInt()) {
-					System.out.println("Ievadi "+(i+1)+". kritērija svaru");
-					scan.next();
-				}
-				kriterijaSvars[i] = scan.nextInt();
-				/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
-				 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
-				*/
-	/*
-				atlSvars = (maxSvars - kriterijaSvars[i]) / (double)(kriteriji.length - sk);
-			} while(kriterijaSvars[i]>maxSvars || kriterijaSvars[i]<5 || 
-				  (i != kriteriji.length-1 && kriterijaSvars[i] == maxSvars) ||
-				  (i == kriteriji.length-1 && (maxSvars - kriterijaSvars[i])  > 0) 
-				  || atlSvars < 5);
-			maxSvars -= kriterijaSvars[i];
-			sk++;
-			scan.nextLine();
+		}
+			
 		}
 		
-		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
-		for(int i=0; i<kriterijaVertejums.length; i++) {
+	public static void ievaditKritSvaru() {
+		int maxSvars = 100, sk = 1;
+		double atlSvars;
+		int[] kriterijaSvars = new int[kriteriji.length];
+		String pagVertiba;
+		
+		// Norāda katra kritērija svaru
+		for(int i = 0; i < kriteriji.length; i++) {
+		do {
+			try {
+			 pagVertiba = JOptionPane.showInputDialog(null, "Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")", "Jautājums", JOptionPane.QUESTION_MESSAGE);
+			 kriterijaSvars[i] = Integer.parseInt(pagVertiba);
+			}catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, e);
+			}
+			/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
+			 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
+			*/
+
+			atlSvars = (maxSvars - kriterijaSvars[i]) / (double)(kriteriji.length - sk);
+		} while(kriterijaSvars[i]>maxSvars || kriterijaSvars[i]<5 || 
+			  (i != kriteriji.length-1 && kriterijaSvars[i] == maxSvars) ||
+			  (i == kriteriji.length-1 && (maxSvars - kriterijaSvars[i])  > 0) 
+			  || atlSvars < 5);
+		maxSvars -= kriterijaSvars[i];
+		sk++;
+		}
+	}
+
+	public static void ievaditAtzimes() {
+		
+		int[][] kriterijaVertejums = new int[studentuSkaits][kriteriji.length];
+		
+		for(int i=0; i<kriteriji.length; i++) {
 			for(int j=0; j<kriterijaVertejums[i].length; j++) {
 				do {
 					System.out.println("Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j]);
@@ -107,6 +116,26 @@ public class GalvenaKlase {
 				}while(kriterijaVertejums[i][j]<0 || kriterijaVertejums[i][j]>10);
 			}
 		}
+	}
+	
+	
+	/*
+			double[] semestraVertejums = new double[studentuSkaits];
+
+	
+	
+	public static void izvelne() {
+		int studSk, kritSk;
+		
+		DecimalFormat df = new DecimalFormat("0.#");
+		
+		
+		
+		
+		
+		
+		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
+		
 		
 		// Gala vērtējuma aprēķināšana
 		double rezultats;
